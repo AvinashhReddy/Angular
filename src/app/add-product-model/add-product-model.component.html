@@ -1,0 +1,83 @@
+<p>add-product-model works!</p>
+<div class="card-body">
+    <div class="card-body">
+        <h4 class="card-title">ADD PRODUCT</h4>
+       
+    <div class="alert alert-info alert-dismissible " role="alert" *ngIf="formSubmitted">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          <span class="sr-only">Close</span>
+        </button>
+        <strong>Bro, your application for finding GF is submitted ! Xd</strong>
+      </div>
+  
+        <div class="row">
+            <div class="col-md-4">
+                <form [formGroup] = "myForm" novalidate>  
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" formControlName="title" [ngClass]="{'is-invalid': title.errors && (title.touched || title.dirty), 'is-valid':title.valid}"   >           
+                        <div class="invalid-feedback" >
+                            <strong *ngIf="title.errors?.required">Title is required</strong>
+                            <strong *ngIf="title.errors?.minlength">Title length must be greated than {{title.errors?.minlength.requiredLength}} character. {{title.errors?.minlength.requiredLength - title.errors?.minlength.actualLength}} more character required. </strong>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Model Name</label>
+                        <input type="text" class="form-control" formControlName = "modelName" [ngClass]="{'is-invalid': modelName.errors && (modelName.touched || modelName.dirty), 'is-valid':modelName.valid}"   >         
+                        <div class="invalid-feedback" >
+                            <strong *ngIf="modelName.errors?.required">modelName is required</strong>
+                            <strong *ngIf="modelName.errors?.minlength">modelName length must be greated than {{modelName.errors?.minlength.requiredLength}} character. {{modelName.errors?.minlength.requiredLength - modelName.errors?.minlength.actualLength}} more character required. </strong>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Color</label>
+                      
+                    <input type="text" class="form-control" formControlName = "color" [ngClass]="{'is-invalid': color.errors && (color.touched || color.dirty), 'is-valid':color.valid}"   >           
+                    <div class="invalid-feedback" >
+                        <strong *ngIf="color.errors?.required">color is required</strong>
+                        <strong *ngIf="color.errors?.minlength">color length must be greated than {{color.errors?.minlength.requiredLength}} character. {{color.errors?.minlength.requiredLength -color.errors?.minlength.actualLength}} more character required. </strong>
+                      </div>
+                </div> 
+                    <div class="form-group">
+                        <label>Product Type</label>
+                        <input type="text" class="form-control" formControlName = "productType" [ngClass]="{'is-invalid': productType.errors && (productType.touched || productType.dirty), 'is-valid':productType.valid}"   >         
+                        <div class="invalid-feedback" >
+                            <strong *ngIf="productType.errors?.required">productType is required</strong>
+                            <strong *ngIf="productType.errors?.minlength">productType length must be greated than {{productType.errors?.minlength.requiredLength}} character. {{productType.errors?.minlength.requiredLength - productType.errors?.minlength.actualLength}} more character required. </strong>
+                          </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" class="form-control" formControlName = "brand" [ngClass]="{'is-invalid': brand.errors && (brand.touched || brand.dirty), 'is-valid':brand.valid}"   >         
+                        <div class="invalid-feedback" >
+                            <strong *ngIf="brand.errors?.required">Brand is required</strong>
+                            <strong *ngIf="brand.errors?.minlength">Brand length must be greated than {{brand.errors?.minlength.requiredLength}} character. {{brand.errors?.minlength.requiredLength - brand.errors?.minlength.actualLength}} more character required. </strong>
+                          </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" class="form-control" formControlName = "price" [ngClass]="{'is-invalid':price.errors && (price.touched || price.dirty), 'is-valid':price.valid}"   >          
+                        <div class="invalid-feedback" >
+                            <strong *ngIf="price.errors?.required">price is required</strong>
+                            <strong *ngIf="price.errors?.minlength">price length must be greated than {{price.errors?.minlength.requiredLength}} character. {{price.errors?.minlength.requiredLength - price.errors?.minlength.actualLength}} more character required. </strong>
+                          </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid" (click)="addProduct(myForm.value)">ADD PRODUCT</button>
+                    <button type="submit" class="btn btn-default">RESET</button>
+                    
+                </form>
+            </div>
+            <div class="col-md-6">
+                <label>
+                    <strong>myForm :json</strong>
+                </label>
+                <pre class="alert alert-dark">{{myForm.value | json }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+
